@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cursor Tracker Div</title>
+</head>
+
+<body>
+    <div class="ball"></div>
+    <style>
+        body{
+            background-color: #252329;
+        }
+        .ball {
+            border-radius: 80%;
+            height: 100px;
+            width: 100px;
+            -webkit-transform: translateX(calc(var(--mouse-x) * 0.9px)) translateY(calc(var(--mouse-y) * 0.9px));
+            transform: translateX(calc(var(--mouse-x) * 0.9px)) translateY(calc(var(--mouse-y) * 0.9px));
+            background: red;
+        }
+    </style>
+    <script>
+        var docStyle = document.documentElement.style;
+
+        // setting CSS variables inside this JS where they 
+        // can be declaratively used inside the CSS file.
+        document.addEventListener('mousemove', function (e) {
+            docStyle.setProperty('--mouse-x', e.clientX);
+            docStyle.setProperty('--mouse-y', e.clientY);
+        });
+    </script>
+</body>
+
+</html>
