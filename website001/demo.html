@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="BGtext">A</div>
+        <div class="card body-center">
+            <div class="card-head">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7b8b2046870513.5867e6355e6ed.png" alt="">
+            </div>
+            <div class="card-body">
+                <h1>Lorem</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque, dui et ullamcorper convallis, velit turpis vulputate felis, posuere tempor justo nisl tempor felis. Duis tristique porta augue, a egestas lectus congue id. Donec nec lectus quis turpis facilisis lobortis ac ac enim. Duis vel condimentum ligula, a pharetra metus. </p>
+            </div>
+            <div class="card-foot">Foot</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="BGtext">A</div>
+    </div>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+        }
+
+        .BGtext {
+            font-size: 500px;
+            background-color: rgba(0, 0, 0, 0);
+            position: absolute;
+            color: rgba(61, 61, 61, 0.611);
+            transform: translate(-50px, -100px) rotate(30deg);
+            text-shadow: 1px 1px 10px rgba(131, 52, 0, 0.741);
+        }
+        .card{
+            position: relative;
+            max-width: 300px;
+            background-color: indianred;
+            border-radius: 4px;
+            box-shadow: 1px 1px 10px palevioletred;
+            height: 500px;
+        }
+        .card-head img{
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+        }
+        .card-body{
+            color: white;
+            padding: 0px 10px;
+        }
+        .card-body p{
+            font-size: 12px;
+        }
+        .card-body h1{
+            margin: 0;
+        }
+        .card-foot{
+            position: absolute;
+            background: rgb(255, 104, 70);
+            width: 100%;
+            bottom: 0;
+            border-radius: 0 0 4px 4px;
+            padding: 5px 0;
+            text-align: center;
+        }
+        .body-center{
+            position: absolute;
+            margin: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</body>
+
+</html>

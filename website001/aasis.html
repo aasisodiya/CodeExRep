@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Akash Sisodiya</title>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Contact Details">
+    <meta name="author" content="Akash Sisodiya">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+    <div class="hud"></div>
+    <div class="block11 circleDivC"></div>
+    <div class="block1">
+        <div class="block2 circleDiv"></div>
+        <div class="block3 circleDiv"></div>
+        <div class="block4 circleDiv"></div>
+        <div class="block5 circleDiv"></div>
+        <div class="block6 circleDiv"></div>
+        <div class="block7 circleDiv"></div>
+        <div class="block8 circleDiv"></div>
+        <div class="block9 circleDiv"></div>
+        <div class="block10 circleDiv"></div>
+    </div>
+    <div class="footer">
+        YOU CAN FIND ME AT ABOVE LINKS!
+    </div>
+    <style>
+        :root {
+            --divheight: 70px;
+            --divwidth: 70px;
+            --divradius: 60px;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            background-color: black;
+            color: white;
+        }
+
+        .hud {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: url('https://orig00.deviantart.net/1c5a/f/2013/081/c/7/simple_hud_by_fallen_trid-d5yv2v5.png');
+            background-size: cover;
+            margin: auto;
+            background-position: center;
+        }
+
+        .circleDiv {
+            height: var(--divheight);
+            width: var(--divwidth);
+            border-radius: 50%;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            animation: antirotate 100s linear infinite;
+        }
+
+        .circleDivC {
+            height: var(--divheight);
+            width: var(--divwidth);
+            border-radius: 50%;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes antirotate {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .block1 {
+            height: var(--divheight);
+            width: var(--divwidth);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 0;
+            right: 0;
+            animation: rotate 100s linear infinite;
+        }
+
+        .block2 {
+            /* top: -200px; */
+            top: calc(-2.0*var(--divradius));
+            background-image: url('img/behance.png');
+        }
+
+        .block3 {
+            top: calc(-1.54*var(--divradius));
+            left: calc(1.28*var(--divradius));
+            background-image: url('img/sketchfab.png');
+        }
+
+        .block4 {
+            top: calc(-1.54*var(--divradius));
+            left: calc(-1.28*var(--divradius));
+            background-image: url('img/steam.png');
+        }
+
+        .block5 {
+            top: calc(-0.34*var(--divradius));
+            left: calc(1.96*var(--divradius));
+            background-image: url('img/github.png');
+        }
+
+        .block6 {
+            top: calc(-0.34*var(--divradius));
+            left: calc(-1.96*var(--divradius));
+            background-image: url('img/xbox.png');
+        }
+
+        .block7 {
+            top: calc(1.0*var(--divradius));
+            left: calc(1.72*var(--divradius));
+            background-image: url('img/linkedin.png');
+        }
+
+        .block8 {
+            top: calc(1.0*var(--divradius));
+            left: calc(-1.72*var(--divradius));
+            background-image: url('img/twitter.png');
+        }
+
+        .block9 {
+            top: calc(1.88*var(--divradius));
+            left: calc(-0.68*var(--divradius));
+            background-image: url('img/googleplus.png');
+        }
+
+        .block10 {
+            top: calc(1.88*var(--divradius));
+            left: calc(0.68*var(--divradius));
+            background-image: url('img/facebook.png');
+        }
+
+        .block11 {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 0;
+            right: 0;
+            background-image: url('img/alogo.svg');
+            z-index: 10;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            margin: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 10px;
+        }
+    </style>
+</body>
+
+</html>
