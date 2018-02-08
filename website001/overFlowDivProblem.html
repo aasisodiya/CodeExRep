@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Overflow Div Problem</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+                <div class="rotor"></div>
+        </div>
+    </div>
+    <style>
+        body{
+            margin: 0;
+        }
+        .rotor{
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            border-bottom: 30px solid salmon;
+            border-top: 30px solid salmon;
+            border-right: 30px solid rgba(250, 128, 114, 0.44);
+            border-left: 30px solid rgba(250, 128, 114, 0.357);
+            background-color: rgba(216, 191, 216, 0);
+            animation: rot 5s infinite linear;
+        }
+        .container{
+            background-color: antiquewhite;
+            height: 100vh;
+            width: 100%;
+        }
+        .box{
+            background-color: rgba(245, 245, 220, 0);
+            height: 150px;
+            width: 150px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+        @keyframes rot{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

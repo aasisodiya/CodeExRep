@@ -3,7 +3,7 @@
 <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="-234 0 490 560" style="enable-background:new -234 0 490 560;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#000000;stroke:#ffa500;stroke-width:10;stroke-miterlimit:5;}
+	.st0{fill:#808080;stroke:#eee;stroke-width:10;stroke-miterlimit:5;}
 	.st0 {
 	stroke-dasharray: 3200;
 	stroke-dashoffset: 0;
@@ -27,7 +27,7 @@
 	stroke-dashoffset: 0;
 	}
 	}
-	.st1{fill:#000000;stroke:#ffa500;stroke-width:10;stroke-miterlimit:5;}
+	.st1{fill:#808080;stroke:#eee;stroke-width:10;stroke-miterlimit:5;}
 	.st1 {
 	stroke-dasharray: 3200;
 	stroke-dashoffset: 0;

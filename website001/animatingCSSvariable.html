@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animating CSS Variables</title>
+</head>
+
+<body>
+    <div class="lol" id="lol">lol</div>
+    <style>
+        :root{
+            --myvar: 10px;
+        }
+        .lol {
+            background: red;
+            animation: wi 5s;
+            width: 100px;
+            color: yellow;
+            height: var(--myvar);
+            position: absolute;
+        }
+
+        @keyframes wi {
+            from {
+                width: 0px;
+                color: red;
+                transform: rotate(30deg);
+            }
+            to {
+                width: 100px;
+                color: yellow;
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+    <script>
+        var st = document.documentElement.style;
+        function myMove() {
+            var elem = document.getElementById("lol");
+            var pos = 0;
+            var id = setInterval(frame, 5);
+            function frame() {
+                if (pos == 350) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.top = pos + 'px';
+                    elem.style.left = pos + 'px';
+                    st.setProperty('--myvar',pos + 'px');
+                    console.log(st.getPropertyValue('--myvar'));
+                }
+            }
+        }
+        myMove();
+    </script>
+</body>
+
+</html>
