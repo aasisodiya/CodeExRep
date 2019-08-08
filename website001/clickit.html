@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ClitckIt!</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .score {
+            position: fixed;
+            right: 0;
+            min-width: 50px;
+            background: grey;
+        }
+
+        .targets {
+            position: fixed;
+            height: 50px;
+            width: 50px;
+            background: cadetblue;
+        }
+
+        #message {
+            text-align: center;
+        }
+
+        #danger {
+            display: none;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="score">
+        Score: <span id="score">0</span>
+        <br />
+        High Score: <span id="highscore">0</span>
+    </div>
+    <div class="targets">
+    </div>
+    <div id="message">Click on box to begin!</div>
+    <div id="danger">
+        <button>Reset High Score</button>
+    </div>
+
+    <script>
+        $(document).ready(function (params) {
+            var begin = true;
+            var highscore = 0;
+            var htimeout = 1;
+            var timeout = -1;
+            var score = 0;
+            function getscore() {
+                return score;
+            }
+            function gethighscore() {
+                return highscore;
+            }
+            function gettimeout() {
+                return timeout;
+            }
+            function gethtimeout() {
+                return htimeout;
+            }
+            while (timeout < 10 || !Number.isInteger(timeout)) {
+                var timeout = parseInt(prompt("For how many sec do you want to play (minimum: 10 sec)?", 10));
+            }
+            if (localStorage.getItem("highscore") != null) {
+                console.log("Played Before!");
+                highscore = localStorage.getItem("highscore");
+                htimeout = localStorage.getItem("timeout");
+                $('#highscore').text(highscore + " (" + htimeout + " sec)");
+            }
+            $('.targets').click(function (params) {
+                score = parseInt($('#score').text()) + 10;
+                if (begin) {
+                    console.log("Start! Timeout is : " + timeout + " sec");
+                    var t = setTimeout(function () {
+                        $('.targets').unbind();
+                        var s, hs, t, ht;
+                        s = getscore();
+                        hs = gethighscore();
+                        t = gettimeout();
+                        ht = gethtimeout();
+                        if ((s / t) > (hs / ht)) {
+                            localStorage.setItem("highscore", s);
+                            localStorage.setItem("timeout", t);
+                            $('#highscore').text(s + " (" + t + " sec)");
+                        }
+                        $('#message').text("Game Over! Refresh to restart!");
+                        $('#message').show();
+                        $('#danger').show();
+                    }, timeout * 1000);
+                    begin = false;
+                    $('#message').hide();
+                }
+                $('#score').text(score + " (" + timeout + " sec)");
+                var height = window.innerHeight - 50;
+                var width = window.innerWidth - 50;
+                params.target.style.left = Math.floor(Math.random() * width) + "px";
+                params.target.style.top = Math.floor(Math.random() * height) + "px";
+                params.target.style.background = getRandomColor();
+            });
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            $('#danger').click(function () {
+                localStorage.setItem("highscore", 0);
+                localStorage.setItem("timeout", 10);
+                $('#highscore').text(0 + " (" + 10 + " sec)");
+                $('#score').text(0 + " (" + 10 + " sec)");
+            });
+
+        });
+    </script>
+</body>
+
+</html>

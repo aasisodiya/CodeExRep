@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>event.target demo</title>
+  <style>
+  span, strong, p {
+    padding: 8px;
+    display: block;
+    border: 1px solid #999;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log"></div>
+<div>
+  <p>
+    <strong><span>click</span></strong>
+  </p>
+</div>
+<div class="block">ok</div>
+<div class="block">ok</div>
+<div class="block">ok</div>
+<div class="block">ok</div>
+<div class="block">ok</div>
+<style>
+.block {
+    background: grey;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+</style>
+<script>
+$( "body" ).click(function( event ) {
+  $( "#log" ).html( "clicked: " + event.target.nodeName );
+  event.target.style.background = getRandomColor();
+  console.log(event.target);
+});
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+</script>
+ 
+</body>
+</html>
