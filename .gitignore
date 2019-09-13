@@ -41,3 +41,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Serverless
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
