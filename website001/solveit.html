@@ -19,7 +19,7 @@
             font-family: Helvetica, sans-serif;
         }
 
-        input {
+        input#answer {
             border: none;
             width: 180px;
             border-radius: 10px;
@@ -31,6 +31,13 @@
         input:focus {
             border: none;
             outline: none;
+        }
+
+        input#time {
+            border: none;
+            width: 50px;
+            border-radius: 10px;
+            text-align: right;
         }
 
         #scorecardholder {
@@ -108,11 +115,61 @@
                 transform: scale(0.9);
             }
         }
+
+        #message {
+            background: lightsalmon;
+            text-align: center;
+            position: absolute;
+            padding: 100px 0;
+            box-shadow: black 0px 0px 1px;
+            z-index: 1;
+            width: 100vw;
+        }
+
+        #finalScoreBoard {
+            background: lightsalmon;
+            text-align: center;
+            position: fixed;
+            height: 100px;
+            padding: 100px 0;
+            box-shadow: black 0px 0px 1px;
+            z-index: 1;
+            width: 100vw;
+            top: 30vh;
+            height: 10vh;
+            display: none;
+        }
+
+        #begin {
+            background: orange;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: black 1px 1px 2px;
+        }
+
+        #warning {
+            display: none;
+            color: red;
+        }
+
+        #finalscore {
+            font-weight: bold;
+            color: white;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <div id="message"><b>Solve It as fast as you can!</b><br>
+        <p style="color: #121212">I would like to play for <input id="time" type="number" value="30" required> seconds
+        </p>
+        <p id="warning">You can play for as low as 20 seconds!</p>
+        <button id="begin">Lets Begin!!</button>
+    </div>
     <div class="centerdiv">
         <span id="val1">16</span>
         <br>
@@ -127,12 +184,33 @@
     <div id="scorecardholder">
         Score : <span id="scorecard">0</span>
     </div>
+    <div id="finalScoreBoard">
+        You have scored <span id="finalscore">0</span> points!
+    </div>
     <script>
         var fscore = 0;
+        var time = -100;
+        var timeout = false;
         //handle the enter key press
         $(document).ready(function (params) {
+            $('#begin').on('click', function (param) {
+                time = $('#time').val();
+                // console.log('You will play for ' + time + ' seconds!');
+                if (time < 20) {
+                    $('#warning').css("display", "block");
+                } else {
+                    $('#message').hide();
+                    // $('#answer').delay(time*1000).hide();
+                    setTimeout(function () {
+                        $('#answer').hide();
+                        timeout = true;
+                        // $('#finalScoreBoard').html();
+                        $('#finalScoreBoard').show();
+                    }, time * 1000);
+                }
+            });
             $(document).on('keypress', function (e) {
-                if (e.which == 13) {
+                if (e.which == 13 && timeout == false) {
                     var val1, val2, operation, answer;
                     val1 = $('#val1').text();
                     val2 = $('#val2').text();
@@ -143,14 +221,16 @@
                     var playWidth = $(".centerdiv").width();
                     if (ans == answer) {
                         fscore = incr();
+                        // console.log(ans + "::" + answer);
                         $('body').css('background', '#9DC43A');
                     }
                     else {
                         $('body').css('background', '#ED3A43');
                     }
                     $('#scorecard').text(fscore);
+                    $('#finalscore').text(fscore);
                     var newVal = loadNewQuestion();
-                    console.log(newVal);
+                    // console.log(newVal);
                     $('#answer').val("");
                     $('#val1').text(newVal[0]);
                     $('#val2').text(newVal[1]);
@@ -158,8 +238,11 @@
                 }
             });
             $(document).on('click', function (params) {
-                console.log('clicked!');
-                $('#answer').focus();
+                // console.log('clicked!');
+                if (time < 20)
+                    $('#time').focus();
+                else
+                    $('#answer').focus();
 
             });
         });
