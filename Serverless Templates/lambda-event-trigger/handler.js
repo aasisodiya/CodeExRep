@@ -1,13 +1,12 @@
 // Author: Akash Sisodiya
 'use strict';
 module.exports.hello = async event => {
-  console.log("Event Hello has been triggered by a scheduled call!");
-  console.log(event);
+  console.log('Lambda Triggered by some event!');
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
+        message: 'Lambda Triggered by some event!',
         input: event,
       },
       null,
