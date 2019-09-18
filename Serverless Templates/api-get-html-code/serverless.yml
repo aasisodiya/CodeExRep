@@ -1,0 +1,103 @@
+# Author : Akash Sisodiya
+service: api-get-html-code
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: lambda
+          method: get
+          integration: lambda # Supported integrations are: lambda, lambda-proxy, aws, aws-proxy, http, http-proxy, mock.
+          # Didn't Worked
+          # documentation:
+          #   requestModels: {}
+          #   methodResponses:
+          #     -
+          #       statusCode: "200"
+          #       ResponseParameters: 
+          #           method.response.header.Content-Type: false
+          #   integration:
+          #     integrationResponses:
+          #       -
+          #         ResponseParameters: 
+          #           method.response.header.Content-Type: "'text/html'"
+          #         ResponseTemplates: {}
+          #         SelectionPattern: ""
+          #         StatusCode: "200"
+          # Also Didn't Worked
+          # requestModels: {}
+          # methodResponses:
+          #   -
+          #     statusCode: "200"
+          #     ResponseParameters: 
+          #         method.response.header.Content-Type: false
+          # integrationResponses:
+          #   -
+          #     ResponseParameters: 
+          #       method.response.header.Content-Type: "'text/html'"
+          #     ResponseTemplates: {}
+          #     SelectionPattern: ""
+          #     StatusCode: "200"
+      # - http:
+      #     path: lambda-proxy
+      #     method: get
+      #     # lambda-proxy is used by default (Integration Response is Disabled)
+      #     integration: lambda-proxy # Supported integrations are: lambda, lambda-proxy, aws, aws-proxy, http, http-proxy, mock.
+      # - http:
+      #     path: default
+      #     method: get
+  # createItem:
+  #   handler: handler.create
+  #   events:
+  #     - http:
+  #         path: create
+  #         method: post
+  #         documentation:
+  #           summary: "Create something"
+  #           description: "Creates the thing you need"
+  #           tags:
+  #             - "Data Creation"
+  #             - "Some other tag"
+  #           requestBody:
+  #             description: "Request body description"
+  #           requestHeaders:
+  #             -
+  #               name: "x-header"
+  #               description: "Header description"
+  #             -
+  #               name: "Authorization"
+  #               description: "Auth Header description"
+  #           queryParams:
+  #             -
+  #               name: "sid"
+  #               description: "Session ID"
+  #             -
+  #               name: "theme"
+  #               description: "Theme for for the website"
+  #           pathParams:
+  #             -
+  #               name: "id"
+  #               description: "ID of the thing you want to create"
+  #           requestModels:
+  #             "application/json": "CreateRequest"
+  #             "application/xml": "CreateRequestXml"
+  #           methodResponses:
+  #             -
+  #               statusCode: "200"
+  #               responseBody:
+  #                 description: "Response body description"
+  #               responseHeaders:
+  #                 -
+  #                   name: "x-superheader"
+  #                   description: "this is a super header"
+  #               responseModels:
+  #                 "application/json": "CreateResponse"
+  #             -
+  #               statusCode: "400"
+  #               responseModels:
+  #                 "application/json": "ErrorResponse"
